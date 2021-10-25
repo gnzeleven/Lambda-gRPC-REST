@@ -1,0 +1,9 @@
+[debug] > Exec(compile, None, None)
+[debug] Evaluating tasks: Compile / compile
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 6 Scala sources to F:\CS441\Lambda-gRPC-REST\LogGrpcServer\target\scala-2.13\classes ...
+[info] Non-compiled module 'compiler-bridge_2.13' for Scala 2.13.6. Compiling...
+[info]   Compilation completed in 8.476s.
+[info] done compiling
+[success] Total time: 13 s, completed Oct 25, 2021 12:05:26 PM
+[debug] > Exec(idea-shell, None, None)
