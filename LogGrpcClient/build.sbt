@@ -33,6 +33,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % scalacticVersion % Test,
   "org.scalatest" %% "scalatest-featurespec" % scalacticVersion % Test,
   "com.typesafe" % "config" % typesafeConfigVersion,
+  "org.scalaj" %% "scalaj-http" % "2.4.2"
 )
 
 assemblyMergeStrategy in assembly := {

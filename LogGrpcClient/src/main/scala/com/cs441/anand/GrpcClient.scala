@@ -1,49 +1,24 @@
 package com.cs441.anand
 
-import com.cs441.anand.Utils.CreateLogger
+import com.cs441.anand.Utils.{CreateLogger}
 
-import java.util.concurrent.TimeUnit
-import com.cs441.anand.client.GreeterGrpc.GreeterBlockingStub
-import com.cs441.anand.client.{GreeterGrpc, HelloRequest}
-import io.grpc.{ManagedChannel, ManagedChannelBuilder, StatusRuntimeException}
+import com.cs441.anand.client.{GreeterGrpc, TimeReply, TimeRequest}
+import scalaj.http.Http
 
-object GrpcClient {
-  def apply(host: String, port: Int): GrpcClient = {
-    val channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build
-    val blockingStub = GreeterGrpc.blockingStub(channel)
-    new GrpcClient(channel, blockingStub)
-  }
+class GrpcClient(private var url: String) extends GreeterGrpc.GreeterBlockingClient {
 
-  def main(args: Array[String]): Unit = {
-    val client = GrpcClient("localhost", 50051)
-    try {
-      val user = args.headOption.getOrElse("world")
-      client.greet(user)
-    } finally {
-      client.shutdown()
-    }
-  }
-}
-
-class GrpcClient private(private val channel: ManagedChannel, private val blockingStub: GreeterBlockingStub) {
-  //create a logger for this class
-  val logger = CreateLogger(classOf[GrpcClient.type])
-
-  def shutdown(): Unit = {
-    channel.shutdown.awaitTermination(5, TimeUnit.SECONDS)
-  }
-
-  /** Say hello to server. */
-  def greet(name: String): Unit = {
-    logger.info("Will try to greet " + name + " ...")
-    val request = HelloRequest(name = name)
-    try {
-      val response = blockingStub.sayHello(request)
-      logger.info("Greeting: " + response.message)
-    }
-    catch {
-      case e: StatusRuntimeException =>
-        logger.warn("RPC failed: {0}", e.getStatus)
-    }
+  val logger = CreateLogger(this.getClass)
+  override def displayTime(logTime: TimeRequest): TimeReply = {
+    val request = Http(url).headers(Map(
+      "Content-Type" -> "application/grpc+proto",
+      "Accept" -> "application/grpc+proto"
+    )).timeout(2000, 10000).postData(logTime.toByteArray)
+    logger.info("Sending HTTP request: " + request + "\n")
+    val response = request.asBytes
+    logger.info("Received HTTP response1: " + response + "\n")
+    logger.info("Received HTTP response2: " + response.body.mkString(",") + "\n")
+    val output = TimeReply.parseFrom(response.body)
+    logger.info("Response from the server: " + output.message + "\n")
+    return output
   }
 }

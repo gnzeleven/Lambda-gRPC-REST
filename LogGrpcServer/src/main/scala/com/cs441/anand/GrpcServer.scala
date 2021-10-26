@@ -2,52 +2,41 @@ package com.cs441.anand
 
 import com.cs441.anand.Utils.CreateLogger
 
-import java.util.logging.Logger
-import io.grpc.{Server, ServerBuilder}
-import com.cs441.anand.server.{GreeterGrpc, HelloReply, HelloRequest}
+import com.cs441.anand.server.{GreeterGrpc, TimeReply, TimeRequest}
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{Await, Future}
+import scala.collection.JavaConverters._
+import com.amazonaws.services.lambda.runtime.events.{APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent}
+import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}
 
-object GrpcServer {
+import scala.concurrent.duration.DurationInt
+import java.util.Base64
+import scala.language.postfixOps
 
-  def main(args: Array[String]): Unit = {
-    val server = new GrpcServer(ExecutionContext.global)
-    server.start()
-    server.blockUntilShutdown()
-  }
+class GrpcServer extends RequestHandler[APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent]
+{
+  val logger = CreateLogger(this.getClass)
+  override def handleRequest(request: APIGatewayProxyRequestEvent, context: Context) : APIGatewayProxyResponseEvent = {
 
-  private val port = 50051
-}
+    val message = if (request.getIsBase64Encoded) Base64.getDecoder.decode(request.getBody.getBytes) else request.getBody.getBytes
+    logger.info("***********" + message.mkString(",") + "\n")
 
-class GrpcServer(executionContext: ExecutionContext) { self =>
-  private[this] var server: Server = null
-  val logger = CreateLogger(classOf[GrpcServer.type])
+    val logTime = TimeRequest.parseFrom(message)
+    val greeterService = new GreeterImpl()
+    val response = Await.result(greeterService.displayTime(logTime), atMost = 10 seconds)
+    val output = Base64.getEncoder.encodeToString(response.toByteArray)
+    logger.info("***********" + output + "\n")
 
-  private def start(): Unit = {
-    server = ServerBuilder.forPort(GrpcServer.port).addService(GreeterGrpc.bindService(new GreeterImpl, executionContext)).build.start
-    logger.info("Server started, listening on " + GrpcServer.port)
-    sys.addShutdownHook {
-      logger.info("*** shutting down gRPC server since JVM is shutting down")
-      self.stop()
-      logger.info("*** server shut down")
-    }
-  }
-
-  private def stop(): Unit = {
-    if (server != null) {
-      server.shutdown()
-    }
-  }
-
-  private def blockUntilShutdown(): Unit = {
-    if (server != null) {
-      server.awaitTermination()
-    }
+    new APIGatewayProxyResponseEvent()
+      .withStatusCode(200)
+      .withHeaders(Map("Content-Type" -> "application/grpc+proto").asJava)
+      .withIsBase64Encoded(true)
+      .withBody(output)
   }
 
   private class GreeterImpl extends GreeterGrpc.Greeter {
-    override def sayHello(req: HelloRequest) = {
-      val reply = HelloReply(message = "Hello " + req.name)
+    override def displayTime(req: TimeRequest) = {
+      val reply = TimeReply(message = "The time that you are looking for is " + req.time)
       Future.successful(reply)
     }
   }

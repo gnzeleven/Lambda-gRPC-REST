@@ -1,4 +1,5 @@
 [debug] Copy resource mappings: 
 [debug] 	(F:\CS441\Lambda-gRPC-REST\LogGrpcClient\src\main\protobuf\client.proto,F:\CS441\Lambda-gRPC-REST\LogGrpcClient\target\scala-2.13\classes\client.proto)
+[debug] 	(F:\CS441\Lambda-gRPC-REST\LogGrpcClient\src\main\resources\application.conf,F:\CS441\Lambda-gRPC-REST\LogGrpcClient\target\scala-2.13\classes\application.conf)
 [debug] 	(F:\CS441\Lambda-gRPC-REST\LogGrpcClient\src\main\resources\logback-test.xml,F:\CS441\Lambda-gRPC-REST\LogGrpcClient\target\scala-2.13\classes\logback-test.xml)
 [debug] 	(F:\CS441\Lambda-gRPC-REST\LogGrpcClient\src\main\resources\logback.xml,F:\CS441\Lambda-gRPC-REST\LogGrpcClient\target\scala-2.13\classes\logback.xml)
