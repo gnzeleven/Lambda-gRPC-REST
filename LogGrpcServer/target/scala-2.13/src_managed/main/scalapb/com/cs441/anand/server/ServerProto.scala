@@ -15,7 +15,7 @@ object ServerProto extends _root_.scalapb.GeneratedFileObject {
   private lazy val ProtoBytes: _root_.scala.Array[Byte] =
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """CgxzZXJ2ZXIucHJvdG8SD2NvbS5jczQ0MS5hbmFuZCIsCgtUaW1lUmVxdWVzdBIdCgR0aW1lGAEgASgJQgniPwYSBHRpbWVSB
-  HRpbWUiMwoJVGltZVJlcGx5EiYKB21lc3NhZ2UYASABKAlCDOI/CRIHbWVzc2FnZVIHbWVzc2FnZTJUCgdHcmVldGVyEkkKC2Rpc
+  HRpbWUiMwoJVGltZVJlcGx5EiYKB21lc3NhZ2UYASABKAhCDOI/CRIHbWVzc2FnZVIHbWVzc2FnZTJUCgdHcmVldGVyEkkKC2Rpc
   3BsYXlUaW1lEhwuY29tLmNzNDQxLmFuYW5kLlRpbWVSZXF1ZXN0GhouY29tLmNzNDQxLmFuYW5kLlRpbWVSZXBseSIAYgZwcm90b
   zM="""
       ).mkString)

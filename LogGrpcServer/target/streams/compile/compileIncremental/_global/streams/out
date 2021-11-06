@@ -1,6 +1,6 @@
 [debug] [zinc] IncrementalCompile -----------
 [debug] IncrementalCompile.incrementalCompile
-[debug] previous = Stamps for: 22 products, 6 sources, 10 libraries
-[debug] current source = Set(${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/ServerProto.scala, ${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/TimeReply.scala, ${BASE}/src/main/scala/com/cs441/anand/Utils/CreateLogger.scala, ${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/GreeterGrpc.scala, ${BASE}/src/main/scala/com/cs441/anand/GrpcServer.scala, ${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/TimeRequest.scala)
+[debug] previous = Stamps for: 28 products, 7 sources, 12 libraries
+[debug] current source = Set(${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/ServerProto.scala, ${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/TimeReply.scala, ${BASE}/src/main/scala/com/cs441/anand/Utils/CreateLogger.scala, ${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/GreeterGrpc.scala, ${BASE}/src/main/scala/com/cs441/anand/LogSearch.scala, ${BASE}/src/main/scala/com/cs441/anand/GrpcServer.scala, ${BASE}/target/scala-2.13/src_managed/main/scalapb/com/cs441/anand/server/TimeRequest.scala)
 [debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())
 [debug] No changes

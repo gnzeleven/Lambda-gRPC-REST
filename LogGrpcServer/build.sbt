@@ -35,7 +35,10 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest-featurespec" % scalacticVersion % Test,
   "com.typesafe" % "config" % typesafeConfigVersion,
   "com.amazonaws" % "aws-lambda-java-core" % "1.2.0",
-  "com.amazonaws" % "aws-lambda-java-events" % "2.2.6"
+  "com.amazonaws" % "aws-lambda-java-events" % "2.2.6",
+  "com.amazonaws" % "aws-java-sdk-s3" % "1.12.90",
+  "commons-io" % "commons-io" % "2.4",
+  "org.scalaj" %% "scalaj-http" % "2.4.2"
 )
 
 ThisBuild / assemblyMergeStrategy := {

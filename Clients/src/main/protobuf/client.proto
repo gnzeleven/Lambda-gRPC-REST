@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package com.cs441.anand;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc displayTime(TimeRequest) returns (TimeReply);
+}
+
+// The request message containing the user's name.
+message TimeRequest {
+  string time = 1;
+}
+
+// The response message containing the greetings
+message TimeReply {
+  bool message = 1;
+}

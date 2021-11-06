@@ -1,7 +1,0 @@
-[debug] > Exec(run, None, None)
-[debug] Evaluating tasks: Compile / run
-[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
-[info] compiling 1 Scala source to F:\CS441\Lambda-gRPC-REST\LogGrpcClient\target\scala-2.13\classes ...
-[info] done compiling
-[success] Total time: 3 s, completed Oct 25, 2021 12:17:18 PM
-[debug] > Exec(idea-shell, None, None)
