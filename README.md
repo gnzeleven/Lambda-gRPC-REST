@@ -35,6 +35,8 @@ in the command line or
 
 ## Project Description
 
+Video Presentation: https://www.youtube.com/playlist?list=PLjPOsh99ez0Ujb1O82M4v3XeyDeFDYgTs
+
 This whole project comprises of multiple sub-projects, as described below.
 
 * <b>Clients:</b> This project contains the gRPC client and RESTful client. It consists of three main classes and three test classes
