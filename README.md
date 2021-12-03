@@ -1,12 +1,8 @@
-# Homework 3
-##### Anandavignesh Velangadu Sivakumar
-##### avelan2@uic.edu
-### Invoking Lambda functions using gRPC and RESTful service
-### Grade: 8%
+# Process Log Files by Invoking Lambda Functions using gRPC and REST
 
 ## Introduction
 
-The goal of this homework is to design and implement a RESTful service and a lambda function that are accessed from clients using gRPC.
+The goal of this project is to design and implement a RESTful service and a lambda function that are accessed from clients using gRPC.
 
 <b>1)</b> Create a client program that uses gRPC to invoke a lambda function deployed on AWS to determine if the desired timestamp is in the log file <br>
 <b>2)</b> Create a client program and the corresponding lambda function that use the REST methods (e.g., GET or POST) to interact
@@ -34,8 +30,6 @@ Requirements: Working AWS account, IntelliJ IDEA 2021.2.1(Community Edition), jd
 in the command line or 
 
 ## Project Description
-
-Video Presentation: https://www.youtube.com/playlist?list=PLjPOsh99ez0Ujb1O82M4v3XeyDeFDYgTs
 
 This whole project comprises of multiple sub-projects, as described below.
 
